@@ -24,7 +24,7 @@ public class ManutencaoController {
 
     @PostMapping
     public ResponseEntity<?> salvar(@RequestBody Manutencao manutencao) {
-        try { Manutencao manutencaoSalva = manutencaoService.salvar(manutencao);
+        try { Manutencao novaManutencao = manutencaoService.salvar(manutencao);
             return ResponseEntity.status(HttpStatus.CREATED).body(novaManutencao);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -37,7 +37,5 @@ public class ManutencaoController {
         return ResponseEntity.noContent().build();
 
     }
-
-
 
 }

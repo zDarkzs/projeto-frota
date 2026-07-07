@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import org.springframework.stereotype.Service;
 import com.example.demo.repository.ManutencaoRepository;
-import com.exemple.demo.repository.veiculoRepository;
+import com.example.demo.repository.VeiculoRepository;
 import com.example.demo.model.Manutencao;
 import org.springframework.beans.factory.annotation.Autowired;
 
