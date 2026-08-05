@@ -18,5 +18,5 @@ public class Mecanico {
 
     @Column(nullable = false)
     private String nome;
-    private String especialidad;
+    private String especialidade;
 }

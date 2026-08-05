@@ -30,4 +30,12 @@ public class MecanicoService {
     public void delete(Long id) {
         mecanicoRepository.deleteById(id);
     }
+
+    public Mecanico atualizar(Long id, Mecanico mecanicoAtualizado) {
+        if (!mecanicoRepository.existsById(id)) {
+            throw new IllegalArgumentException("Mecânico não encontrado com o ID: " + id);
+        }
+        mecanicoAtualizado.setId(id);
+        return mecanicoRepository.save(mecanicoAtualizado);
+    }
 }

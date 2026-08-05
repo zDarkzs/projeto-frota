@@ -30,4 +30,12 @@ public class PecaService {
     public void delete(Long id) {
         pecaRepository.deleteById(id);
     }
+    
+    public Peca atualizar(Long id, Peca pecaAtualizada) {
+        if (!pecaRepository.existsById(id)) {
+            throw new IllegalArgumentException("Peça não encontrada com o ID: " + id);
+        }
+        pecaAtualizada.setId(id);
+        return pecaRepository.save(pecaAtualizada);
+    }
 }

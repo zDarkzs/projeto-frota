@@ -43,4 +43,14 @@ public class MecanicoController {
         mecanicoService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Mecanico mecanico) {
+        try {
+            Mecanico atualizado = mecanicoService.atualizar(id, mecanico);
+            return ResponseEntity.ok(atualizado);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

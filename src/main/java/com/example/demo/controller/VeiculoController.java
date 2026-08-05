@@ -43,4 +43,15 @@ public class VeiculoController {
         veiculoService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+    
+    @PutMapping("/{id}") 
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Veiculo veiculo) {
+        try {
+            veiculo.setId(id);
+            Veiculo veiculoAtualizado = veiculoService.atualizar(id, veiculo);
+            return ResponseEntity.ok(veiculoAtualizado);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+}
 }

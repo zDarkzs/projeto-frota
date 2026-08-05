@@ -32,4 +32,12 @@ public class VeiculoService {
     public void deletar(Long id) {
         veiculoRepository.deleteById(id);
     }
+
+    public Veiculo atualizar(Long id, Veiculo veiculoAtualizado) {
+    if (!veiculoRepository.existsById(id)) {
+        throw new IllegalArgumentException("Veículo não encontrado com o ID: " + id);
+    }
+    veiculoAtualizado.setId(id);
+    return veiculoRepository.save(veiculoAtualizado);
+}
 }

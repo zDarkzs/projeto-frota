@@ -38,4 +38,14 @@ public class ManutencaoController {
 
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Manutencao manutencao) {
+        try {
+            Manutencao atualizada = manutencaoService.atualizar(id, manutencao);
+            return ResponseEntity.ok(atualizada);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }

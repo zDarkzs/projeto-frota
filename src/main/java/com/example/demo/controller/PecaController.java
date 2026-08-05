@@ -44,5 +44,15 @@ public class PecaController {
         pecaService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody Peca peca) {
+        try {
+            Peca atualizada = pecaService.atualizar(id, peca);
+            return ResponseEntity.ok(atualizada);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
     
 }

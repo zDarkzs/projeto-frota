@@ -37,4 +37,12 @@ public class ManutencaoService {
     public void delete(Long id) {
         manutencaoRepository.deleteById(id);
     }
+
+    public Manutencao atualizar(Long id, Manutencao manutencaoAtualizada) {
+        if (!manutencaoRepository.existsById(id)) {
+            throw new IllegalArgumentException("Manutenção não encontrada com o ID: " + id);
+        }
+        manutencaoAtualizada.setId(id);
+        return manutencaoRepository.save(manutencaoAtualizada);
+    }
 }
